@@ -1,7 +1,7 @@
 <?php
 
 
-
+ 
 abstract class Model{
 
     private PDO $db;

@@ -3,7 +3,7 @@ require_once('Model.php');
 require_once('Pokemon.php');
 
 class PokemonManager extends Model{
-
+ 
     private array $pokemons;
 
 

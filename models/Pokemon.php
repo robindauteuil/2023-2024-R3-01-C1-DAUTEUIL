@@ -2,7 +2,7 @@
 
 
 class Pokemon {
-
+ 
     private ?int $idPokemon;
     private string $nomEspece;
     private ?string $description;

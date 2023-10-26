@@ -1,7 +1,7 @@
 <?php
 
 class View{
-
+ 
     private string $fichier;
 
     private string $titre;
