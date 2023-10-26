@@ -17,8 +17,62 @@ table{
 td,th{
     padding : 5px;
     border-style: solid;
+    text-align: center;
 }
 
 th{
     background-color: aquamarine;
+}
+
+ul{
+    
+    height: 40px;
+}
+ul.nav {
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 50px;
+    background-color: #333;
+    display: flex; /* Utilisation de flexbox */
+    align-items: center; 
+    
+}
+
+/* Style des éléments de menu */
+ul.nav li {
+    display: inline;
+    margin:5%;
+    
+}
+
+/* Style des liens dans le menu */
+ul.nav li a {
+    text-decoration: none;
+    color: #fff;
+    margin: 15px;
+    padding: 5px 10px;
+    background-color: #333;
+    border-radius: 5px;
+    
+}
+
+/* Style au survol des liens */
+ul.nav li a:hover {
+    background-color: #555;
+}
+
+
+.edit-button, .delete-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff; /* Couleur de fond du bouton Edit */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none; /* Supprimer la décoration du lien */
+    border: 1px solid #007bff; /* Bordure */
+    border-radius: 4px; /* Coins arrondis */
+    margin-right: 5px; /* Marge entre les boutons */
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
 }

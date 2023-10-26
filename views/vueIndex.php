@@ -24,6 +24,7 @@
             echo "<td>" . $pokemon->getDescription() . "</td>";
             echo "<td>" . $pokemon->getTypeOne() . "</td>";
             echo "<td>" . $pokemon->getTypeTwo() . "</td>";
+            echo "<td><a class='edit-button' href='index.php?action=edit-Pokemon&id=" . $pokemon->getIdPokemon() . "'>edit</a> <a class='delete-button' href='index.php?action=del-pokemon&id=" . $pokemon->getIdPokemon() . "'>del</a></td>";
             
             echo "</tr>";
         }

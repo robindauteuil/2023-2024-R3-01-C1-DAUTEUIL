@@ -15,9 +15,12 @@
 <body>
 <header>
     <!-- Menu -->
-    <nav>
-
-    </nav>
+<ul class="nav">
+    <li><a href="index.php?action=add-pokemon">add-pokemon</a></li>
+    <li><a href="index.php?action=add-pokemon-type"> add-pokemon-type</a></li>
+    <li><a href="index.php?action=search"> search</a></li>
+    <li><a href="index.php">Index</a></li>
+</ul>
 </header>
 <?= $contenu ?>
 <main id="contenu">
