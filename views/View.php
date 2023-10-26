@@ -11,7 +11,7 @@ class View{
         // Détermination du nom du fichier vue à partir de l'action
         $this->fichier = "views/vue" . $action . ".php";
         $this->titre = $action;
-    }
+    } 
 
     public function generer(array $donnees){
 

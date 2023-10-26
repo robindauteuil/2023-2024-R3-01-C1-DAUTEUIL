@@ -10,20 +10,21 @@ abstract class Model{
 
         if ($params){
             $req = $this->db->prepare($sql);
-            $result = $req->execute($sql, $params);
+            $result = $req->execute($params);
         }
         else{
-            $result = $this->db->query($sql);
+            $req = $this->db->prepare($sql);
+            $result = $req->execute();
 
         }
         
-        return $result; 
+        return $result ? $req : false; 
 
     }
     
     
     
-    private function getDB() : PDO{
+    public function getDB() : PDO{
 
 
 
