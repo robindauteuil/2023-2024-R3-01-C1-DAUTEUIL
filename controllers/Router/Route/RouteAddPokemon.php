@@ -1,5 +1,7 @@
 <?php
 
+include_once('../Route.php');
+
 
 class RouteAddPokemon extends Route{
 
@@ -7,7 +9,7 @@ class RouteAddPokemon extends Route{
 
     public function __construct(MainController $controller) {
         parent::__construct($controller);
-    }
+    } 
 
 
     public function get($params = []){
@@ -18,6 +20,8 @@ class RouteAddPokemon extends Route{
     public function post($params = []){
         $this->controler->index();
     }
+
+}
 
 
 
