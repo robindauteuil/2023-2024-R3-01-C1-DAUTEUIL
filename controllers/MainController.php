@@ -17,8 +17,17 @@ class MainController{
         
         
     }
- 
-}
 
+
+
+    public function displayAddPokemon(){
+        $indexView = new View('AddPokemon');
+        $indexView->generer();
+
+
+    }
+ 
+} 
+ 
 
 ?>

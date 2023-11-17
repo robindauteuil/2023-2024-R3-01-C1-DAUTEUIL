@@ -10,7 +10,7 @@
             <th>idPokemon</th>
             <th>nom espece</th>
             <th>description</th>
-            <th>premier type</th>
+            <th>premier type</th> 
             <th>second type</th>
             <th>option</th>
             
@@ -27,7 +27,7 @@
             echo "<td><a class='edit-button' href='index.php?action=edit-Pokemon&id=" . $pokemon->getIdPokemon() . "'>edit</a> <a class='delete-button' href='index.php?action=del-pokemon&id=" . $pokemon->getIdPokemon() . "'>del</a></td>";
             
             echo "</tr>";
-        }
+        }  
         ?>
         
     </table>

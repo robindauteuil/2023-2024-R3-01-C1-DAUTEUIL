@@ -1,10 +1,7 @@
 <?php
 
-include_once('../Route.php');
 
-
-
-class RouteIndex extends Route{
+class RouteAddPokemon extends Route{
 
     private MainController $controler;
 
@@ -14,20 +11,13 @@ class RouteIndex extends Route{
 
 
     public function get($params = []){
-        $this->controler->index();
+        $this->controler->displayAddPokemon();
     }
 
 
     public function post($params = []){
         $this->controler->index();
     }
-
-
-
-}
-
-
-
 
 
 

@@ -24,7 +24,7 @@ class View{
         // Renvoi de la vue au navigateur
         echo $vue;
     }
-
+ 
 
     private function genererFichier(string $fichier, array $donnees){
 
@@ -32,7 +32,7 @@ class View{
             // Rend les éléments du tableau $donnees accessibles dans la vue
             // Voir la documentation de extract
             extract($donnees);
-            
+             
             // Démarrage de la temporisation de sortie
             ob_start();
             

@@ -1,7 +1,43 @@
 <?php
 
-abstract class Route{
+class Router{
 
+    private Array $routeList = [];
+    private Array  $ctrlList = [] ;
+
+
+
+    public function __construct($name_of_action_key = "action"){
+
+        $this->createControllerList ();
+        $this->createRouteList();
+    }
+
+
+
+    public function createControllerList(){
+        $this->ctrlList["main"]=  new MainController();
+
+    }
+
+
+    public function createRouteList(){
+
+        $this->routeList["index"]=  new RouteIndex("", $this->ctrlList["main"]);
+    }
+
+
+    public function routing($get,$post){
+
+        if($get != null)
+        {
+            if($post != null){
+                $this->routeList[$get]->action($post);
+            }
+            else $this->routeList[$get]->action(); 
+        }  
+        
+    }
     
 }
 
