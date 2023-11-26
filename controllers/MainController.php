@@ -20,9 +20,9 @@ class MainController{
 
 
 
-    public function displayAddPokemon(){
+    public function displayAddPokemon() :void{
         $indexView = new View('AddPokemon');
-        $indexView->generer();
+        $indexView->generer([]);
 
 
     }

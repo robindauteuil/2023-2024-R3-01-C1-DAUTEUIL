@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class Route{
+abstract class Route2{
  
  
     protected $controller;

@@ -1,6 +1,6 @@
 <?php
-include_once('Route.php');
-include_once('Route/RouteIndex.php');
+include('Route.php');
+include('Route/RouteIndex.php');
 include_once('Route/RouteAddPokemon.php');
 
 class Router{
@@ -12,7 +12,10 @@ class Router{
 
     public function __construct($name_of_action_key = "action"){
 
+        //initialise la liste de controler
         $this->createControllerList ();
+
+        //initialise la liste de route
         $this->createRouteList();
     }
 
@@ -26,8 +29,8 @@ class Router{
 
     public function createRouteList(){
 
-        $this->routeList["index"]=  new RouteIndex("", $this->ctrlList["main"]);
-        $this->routeList["add-pokemon"]=  new RouteAddPokemon("", $this->ctrlList["main"]);
+        $this->routeList["index"]=  new RouteIndex( $this->ctrlList["main"]);
+        $this->routeList["add-pokemon"]=  new RouteAddPokemon( $this->ctrlList["main"]);
     }
 
 
