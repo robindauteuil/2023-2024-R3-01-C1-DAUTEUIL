@@ -58,6 +58,18 @@ class Pokemon {
     public function setUrlImg(?string $urlImg): void {
         $this->urlImg = $urlImg;
     }
+
+
+    // Méthode pour obtenir la liste des propriétés
+    public static function getProprietes()
+    {
+        $reflect = new ReflectionClass('Pokemon');
+        $proprietes = [];
+        foreach ($reflect->getProperties(ReflectionProperty::IS_PRIVATE) as $prop) {
+            $proprietes[] = $prop->getName();
+        }
+        return $proprietes;
+    }
 }
 
 

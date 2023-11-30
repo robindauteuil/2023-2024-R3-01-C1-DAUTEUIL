@@ -76,3 +76,13 @@ ul.nav li a:hover {
 .edit-button:hover, .delete-button:hover {
     background-color: #0056b3; /* Couleur de fond au survol */
 } 
+
+
+
+/* Style général du formulaire */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+ 

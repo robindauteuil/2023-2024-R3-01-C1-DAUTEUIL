@@ -26,7 +26,22 @@ class MainController{
 
 
     }
- 
+
+
+    public function displayAddType() :void{
+        $indexView = new View('AddType');
+        $indexView->generer([]);
+
+
+    }
+
+    public function displaySearch() :void{
+        $indexView = new View('Search');
+        $indexView->generer([]);
+
+
+    }
+    
 } 
  
 

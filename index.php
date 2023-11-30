@@ -6,7 +6,8 @@ require_once('controllers/Router/Router.php');
 
 
 $router = new Router();
-$router->routing("index",null);
+if(!isset($_GET['action'])) $_GET['action']="index";
+//$router->routing("index",null);
 //$controler = new MainController();
 $action = $_GET['action'];
 $router->routing($action,null);
