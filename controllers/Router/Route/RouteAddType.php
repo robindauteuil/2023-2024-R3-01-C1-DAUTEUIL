@@ -6,7 +6,7 @@ abstract class Route4{
     //protected $controller;
 
     //public function __construct(MainController $controller) {
-      //  $this->controller = $controller;}
+      //  $this->controller = $controller;} 
 
 
     public function action($params = [], $method = 'GET'){

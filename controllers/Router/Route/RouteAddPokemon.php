@@ -7,11 +7,12 @@ abstract class Route3{
     //protected $controller;
 
     //public function __construct(MainController $controller) {
-      //  $this->controller = $controller;}
+      //  $this->controller = $controller;} 
 
 
-    public function action($params = [], $method = 'GET'){
-        if($method == 'GET') $this->get($params);
+    public function action(?array $params = null){
+        if($params == null) $this->get();
+        else $this->post($params);
     }
 
     abstract protected function get($params = []);
@@ -49,7 +50,7 @@ class RouteAddPokemon extends Route3{
 
 
     public function post($params = []){
-        $this->controler->index();
+        $this->controler->addPokemon($params);
     }
 
 }

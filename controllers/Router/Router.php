@@ -50,7 +50,7 @@ class Router{
             }
             else $this->routeList[$get]->action(); 
         }  
-        
+         
     }
     
 }

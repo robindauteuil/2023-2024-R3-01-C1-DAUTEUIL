@@ -14,7 +14,7 @@
         <label for="champRecherche">Champ de Recherche :</label>
         <select id="champRecherche" name="champRecherche">
             <?php
-            // Obtenez la liste des propriétés de la classe Pokemon
+            // Obtenez la liste des propriétés de la classe Pokemon 
             $proprietes = Pokemon::getProprietes();
 
             // Générez dynamiquement les options du menu déroulant

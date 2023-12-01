@@ -51,6 +51,16 @@ class PokemonManager extends Model{
         return $pokemon;
     }
 
+
+    public function createPokemon(array $pokemon){
+        $columns = implode(', ', array_keys($pokemon));
+        $values = ':' . implode(', ', array_values($pokemon));
+        $sql = "INSERT INTO pokemon ($columns) VALUES ($values)";
+        parent::getDB();
+        parent::execRequest($sql);
+
+    }
+
 }
 
 

@@ -5,13 +5,17 @@ require_once('models/PokemonManager.php');
 
  
 class MainController{
+    private $pokemonManager;
 
+    public function __construct() {
+        $this->pokemonManager = new PokemonManager();
+    }
     public function Index() : void {
-        $pokemonManager = new PokemonManager();
-
-        $all = $pokemonManager->getAll();
         
-        $pika = $pokemonManager->getByID(1);
+
+        $all = $this->pokemonManager->getAll();
+        
+        $pika = $this->pokemonManager->getByID(1);
         $indexView = new View('Index');
         $indexView->generer(['nomDresseur' => "Robin", 'pika' =>$pika->getNomEspece(), 'all'=>$all]);
         
@@ -20,9 +24,9 @@ class MainController{
 
 
 
-    public function displayAddPokemon() :void{
+    public function displayAddPokemon(?string $message = null ) :void{
         $indexView = new View('AddPokemon');
-        $indexView->generer([]);
+        $indexView->generer(['message' => $message]);
 
 
     }
@@ -42,6 +46,11 @@ class MainController{
 
     }
     
+
+    public function addPokemon(array $data){
+        $this->pokemonManager->createPokemon($data);
+
+    }
 } 
  
 

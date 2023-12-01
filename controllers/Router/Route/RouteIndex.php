@@ -1,11 +1,11 @@
 <?php
 
 //include('../Route.php');
-abstract class Route{
+abstract class Route6{
  
  
     
-    
+     
 
  
         
@@ -36,7 +36,7 @@ abstract class Route{
 
 
   
-class RouteIndex extends Route{
+class RouteIndex extends Route6{
 
     private MainController $controler;
 

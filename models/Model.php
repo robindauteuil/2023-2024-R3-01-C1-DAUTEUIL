@@ -6,6 +6,10 @@ abstract class Model{
 
     private PDO $db;
 
+    public function __construct(){
+        
+    }
+
     function execRequest(string $sql, array $params = null) : PDOStatement|false{
 
         if ($params){
