@@ -49,15 +49,28 @@ class PokemonManager extends Model{
         }
 
         return $pokemon;
-    }
+    } 
 
 
-    public function createPokemon(array $pokemon){
-        $columns = implode(', ', array_keys($pokemon));
-        $values = ':' . implode(', ', array_values($pokemon));
+    public function createPokemon(Pokemon $pokemon){
+
+        $pokemonArray = $pokemon->toArray();
+        
+        // Construction de la requête SQL
+        $columns = implode(', ', array_keys($pokemonArray));
+        $values = ':' . implode(', :', array_keys($pokemonArray));
         $sql = "INSERT INTO pokemon ($columns) VALUES ($values)";
         parent::getDB();
-        parent::execRequest($sql);
+        //$sql = "insert into pokemon (nomEspece,typeOne) values ('salameche','feu')";
+        //parent::execRequest($sql);
+        $res = parent::execRequest($sql,$pokemonArray);
+
+
+        $sql2 = "SELECT LAST_INSERT_ID() as last_id";
+        $id = (int) parent::execRequest($sql2)->fetchColumn();
+
+        
+        return ['id' => $id, 'res' => $res];
 
     }
 

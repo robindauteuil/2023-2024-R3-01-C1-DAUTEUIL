@@ -46,6 +46,7 @@ class Router{
         if($get != null)
         {
             if($post != null){
+                
                 $this->routeList[$get]->action($post);
             }
             else $this->routeList[$get]->action(); 

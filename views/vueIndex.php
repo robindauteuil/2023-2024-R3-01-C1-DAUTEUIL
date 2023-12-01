@@ -4,6 +4,29 @@
 <h1>Pokédex de <?= $nomDresseur ?></h1>
 
 
+<?php 
+if(isset($message)){ 
+   
+    echo '<style>';
+    echo '.erreur {';
+    echo '    color: #ff0000; /* Couleur rouge */';
+    echo '    font-weight: bold;';
+    echo '    margin-bottom: 10px;';
+    echo '}';
+    echo '</style>';
+    echo '</head>';
+    echo '<body>';
+    
+    echo '<div class="erreur">';
+    echo '<p>' . $message . '</p>';
+    echo '</div>';
+    
+
+}
+
+?>
+
+
 
 <?php foreach ($all as $pokemon) { ?>
     <table border="1">

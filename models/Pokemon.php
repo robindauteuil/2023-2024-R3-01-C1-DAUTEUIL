@@ -70,6 +70,15 @@ class Pokemon {
         }
         return $proprietes;
     }
+
+
+    public function toArray() {
+        $proprietesArray = [];
+        foreach ($this->getProprietes() as $propriete) {
+            if(isset($this->$propriete)) $proprietesArray[$propriete] = $this->$propriete;
+        }
+        return $proprietesArray;
+    }
 }
 
 

@@ -22,7 +22,7 @@ abstract class Route3{
 
 
 
-    protected function getParam(array $array, string $paramName, bool $canBeEmpty=true)
+    static function getParam(array $array, string $paramName, bool $canBeEmpty=true)
     {
         if (isset($array[$paramName])) {
             if(!$canBeEmpty && empty($array[$paramName]))
@@ -50,7 +50,20 @@ class RouteAddPokemon extends Route3{
 
 
     public function post($params = []){
-        $this->controler->addPokemon($params);
+        try {
+            // Récupérer les valeurs nécessaires avec getParam
+            $data["nomEspece"] = parent::getParam($params, "nomEspece", false);
+            $data["typeOne"] = parent::getParam($params, "typeOne", false);
+            $data["typeTwo"] = parent::getParam($params, "typeTwo", false);
+            $data["description"] = parent::getParam($params, "description", false);
+            $data["urlImg"] = parent::getParam($params, "urlImg", false);
+
+            // Appeler la méthode du contrôleur avec les données
+            $this->controler->addPokemon($data);
+        } catch (Exception $e) {
+            // Afficher le formulaire avec un message d'erreur
+            $this->controler->displayAddPokemon($e->getMessage());
+        }
     }
 
 }

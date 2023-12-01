@@ -21,7 +21,7 @@ abstract class Route2{
 
 
 
-    protected function getParam(array $array, string $paramName, bool $canBeEmpty=true)
+    static function getParam(array $array, string $paramName, bool $canBeEmpty=true)
     {
         if (isset($array[$paramName])) {
             if(!$canBeEmpty && empty($array[$paramName]))

@@ -12,12 +12,6 @@
 <?php 
 if($message != null){ 
    
-    echo "<!DOCTYPE html>";
-    echo '<html lang="en">';
-    echo '<head>';
-    echo '<meta charset="UTF-8">';
-    echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-    echo '<title>' . $message . '</title>';
     echo '<style>';
     echo '.erreur {';
     echo '    color: #ff0000; /* Couleur rouge */';
@@ -29,13 +23,9 @@ if($message != null){
     echo '<body>';
     
     echo '<div class="erreur">';
-    echo '<p>Une erreur s est produite. Veuillez réessayer.</p>';
+    echo '<p>' . $message . '</p>';
     echo '</div>';
     
-    echo '</body>';
-    echo '</html>';
-    
-
 
 }
 

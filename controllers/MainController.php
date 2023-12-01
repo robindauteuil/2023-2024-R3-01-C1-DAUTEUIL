@@ -15,9 +15,9 @@ class MainController{
 
         $all = $this->pokemonManager->getAll();
         
-        $pika = $this->pokemonManager->getByID(1);
+        //$pika = $this->pokemonManager->getByID(1);
         $indexView = new View('Index');
-        $indexView->generer(['nomDresseur' => "Robin", 'pika' =>$pika->getNomEspece(), 'all'=>$all]);
+        $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all]);
         
         
     }
@@ -48,7 +48,21 @@ class MainController{
     
 
     public function addPokemon(array $data){
-        $this->pokemonManager->createPokemon($data);
+        $p = new Pokemon();
+        $p->setNomEspece($data['nomEspece']) ;
+        $p->setTypeOne($data['typeOne']) ;
+        $p->setTypeTwo($data['typeTwo']) ;
+        $p->setDescription($data['description']) ;
+        $p->setUrlImg($data['urlImg']) ;
+        $insert = $this->pokemonManager->createPokemon($p);
+        
+        if($insert['res']) $message = 'insertion réussie';
+        else $message = 'insertion a échoué';
+        $p->setIdPokemon($insert['id']);
+        $indexView = new View('Index');
+        $all = $this->pokemonManager->getAll();
+        $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
+        return $p;
 
     }
 } 

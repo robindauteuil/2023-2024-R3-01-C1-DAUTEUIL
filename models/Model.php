@@ -14,7 +14,10 @@ abstract class Model{
 
         if ($params){
             $req = $this->db->prepare($sql);
-            $result = $req->execute($params);
+            foreach ($params as $propriete => $valeur) {
+                $req->bindValue(":$propriete", $valeur, PDO::PARAM_STR);
+            }
+            $result = $req->execute();
         }
         else{
             $req = $this->db->prepare($sql);
