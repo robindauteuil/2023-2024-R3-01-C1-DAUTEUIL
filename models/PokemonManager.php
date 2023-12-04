@@ -74,6 +74,17 @@ class PokemonManager extends Model{
 
     }
 
+    public function deletePokemonAndIndex(int $id) {
+        parent::getDB();
+        $idPokemon["idPokemon"] = $id;
+        $rc = parent::execRequest("DELETE FROM pokemon WHERE idPokemon = :idPokemon", $idPokemon);
+        
+        $rowCount = $rc->rowCount();
+        if($rowCount>0) $res = true;
+        else $res = false;
+        return $res;
+    }
+
 }
 
 

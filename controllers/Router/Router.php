@@ -4,6 +4,7 @@ include('Route/RouteIndex.php');
 include_once('Route/RouteAddPokemon.php');
 include_once('Route/RouteAddType.php');
 include_once('Route/RouteSearch.php');
+include_once('Route/RouteDelPokemon.php');
 
 class Router{
 
@@ -34,7 +35,7 @@ class Router{
     public function createRouteList(){
 
         $this->routeList["index"]=  new RouteIndex( $this->ctrlList["main"]);
-        $this->routeList["del-pokemon"]=  new RouteIndex( $this->ctrlList["main"]);
+        $this->routeList["del-pokemon"]=  new RouteDelPokemon( $this->ctrlList["main"]);
         $this->routeList["add-pokemon"]=  new RouteAddPokemon( $this->ctrlList["main"]);
         $this->routeList["add-pokemon-type"]=  new RouteAddType( $this->ctrlList["main"]);
         $this->routeList["search"]=  new RouteSearch( $this->ctrlList["main"]);
@@ -47,7 +48,7 @@ class Router{
         {
             if($post != null){
                 
-                $this->routeList[$get]->action($post);
+                $this->routeList[$get]->action($post,"POST");
             }
             else $this->routeList[$get]->action(); 
         }  

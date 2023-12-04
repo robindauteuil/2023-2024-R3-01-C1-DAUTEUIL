@@ -10,8 +10,8 @@ abstract class Route3{
       //  $this->controller = $controller;} 
 
 
-    public function action(?array $params = null){
-        if($params == null) $this->get();
+    public function action(?array $params = null, $method = 'GET'){
+        if($method == 'GET') $this->get($params);
         else $this->post($params);
     }
 

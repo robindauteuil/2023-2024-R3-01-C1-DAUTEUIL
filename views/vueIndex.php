@@ -36,6 +36,7 @@ if(isset($message)){
             <th>description</th>
             <th>premier type</th> 
             <th>second type</th>
+            <th>Photo</th>
             <th>option</th>
         </tr>
         <tr>
@@ -44,6 +45,7 @@ if(isset($message)){
             <td><?php echo $pokemon->getDescription(); ?></td>
             <td><?php echo $pokemon->getTypeOne(); ?></td>
             <td><?php echo $pokemon->getTypeTwo(); ?></td>
+            <td><?php echo $pokemon->getUrlImg(); ?></td>
             <td>
                 <a class='edit-button' href='index.php?action=edit-Pokemon&id=<?php echo $pokemon->getIdPokemon(); ?>'>edit</a>
                 <a class='delete-button' href='index.php?action=del-pokemon&id=<?php echo $pokemon->getIdPokemon(); ?>'>del</a>

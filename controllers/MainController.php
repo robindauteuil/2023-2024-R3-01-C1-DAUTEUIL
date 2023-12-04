@@ -65,6 +65,16 @@ class MainController{
         return $p;
 
     }
+
+
+    public function deletePokemonAndIndex(int $idPokemon){
+        $res = $this->pokemonManager->deletePokemonAndIndex($idPokemon);
+        if($res) $message = "suppression réussi";
+        else $message = "suppression échouée";
+        $indexView = new View('Index');
+        $all = $this->pokemonManager->getAll();
+        $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
+    }
 } 
  
 
