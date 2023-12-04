@@ -29,9 +29,10 @@ class PokemonManager extends Model{
     }
 
 
-    public function getByID(int $idPokemon):?Pokemon{
+    public function getByID(int $id):?Pokemon{
         parent::getDB();
-        $result = parent::execRequest('select * from pokemon where idPokemon = ?', [$idPokemon]);
+        $idPokemon["idPokemon"] = $id;
+        $result = parent::execRequest('select * from pokemon where idPokemon = :idPokemon', $idPokemon);
         $row = $result->fetch(PDO::FETCH_ASSOC);
 
         if ($row) {
@@ -42,7 +43,7 @@ class PokemonManager extends Model{
             $pokemon->setTypeOne($row['typeOne']);
             $pokemon->setTypeTwo($row['typeTwo']);
             $pokemon->setUrlImg($row['urlImg']);
-            return $pokemon;
+            
         } 
         else {
             return null; // Aucun Pokémon trouvé avec cet ID.
@@ -74,7 +75,7 @@ class PokemonManager extends Model{
 
     }
 
-    public function deletePokemonAndIndex(int $id) {
+    public function deletePokemonAndIndex(?int $id = null) {
         parent::getDB();
         $idPokemon["idPokemon"] = $id;
         $rc = parent::execRequest("DELETE FROM pokemon WHERE idPokemon = :idPokemon", $idPokemon);

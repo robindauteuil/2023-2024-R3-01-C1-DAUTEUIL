@@ -67,13 +67,25 @@ class MainController{
     }
 
 
-    public function deletePokemonAndIndex(int $idPokemon){
+    public function deletePokemonAndIndex(?int $idPokemon = null){
         $res = $this->pokemonManager->deletePokemonAndIndex($idPokemon);
         if($res) $message = "suppression réussi";
         else $message = "suppression échouée";
         $indexView = new View('Index');
         $all = $this->pokemonManager->getAll();
         $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
+    }
+
+
+
+    public function displayEditPokemon(?int $idPokemon = null)
+    {
+
+        $pokemon = $this->pokemonManager->getByID($idPokemon);
+        $editPokemon =  new View('AddPokemon');
+        $editPokemon->generer(['pokemon' => $pokemon]);
+
+
     }
 } 
  

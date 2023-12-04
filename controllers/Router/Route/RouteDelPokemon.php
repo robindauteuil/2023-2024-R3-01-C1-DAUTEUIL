@@ -36,7 +36,17 @@ class RouteDelPokemon extends Route7 {
     } 
 
     public function get($params = []) {
-        $this->controller->deletePokemonAndIndex(parent::getParam($_GET, 'id'));
+
+        try {
+        $id = parent::getParam($_GET, 'id');
+
+        $this->controller->deletePokemonAndIndex($id);
+        }
+        catch (Exception $e) {
+            // Afficher le formulaire avec un message d'erreur
+            $this->controller->deletePokemonAndIndex();
+        }
+
     }
 
     public function post($params = []) {

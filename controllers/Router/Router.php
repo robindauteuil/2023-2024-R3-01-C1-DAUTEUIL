@@ -5,6 +5,7 @@ include_once('Route/RouteAddPokemon.php');
 include_once('Route/RouteAddType.php');
 include_once('Route/RouteSearch.php');
 include_once('Route/RouteDelPokemon.php');
+include_once('Route/RouteEditPokemon.php');
 
 class Router{
 
@@ -39,6 +40,7 @@ class Router{
         $this->routeList["add-pokemon"]=  new RouteAddPokemon( $this->ctrlList["main"]);
         $this->routeList["add-pokemon-type"]=  new RouteAddType( $this->ctrlList["main"]);
         $this->routeList["search"]=  new RouteSearch( $this->ctrlList["main"]);
+        $this->routeList["edit-Pokemon"]=  new RouteEditPokemon( $this->ctrlList["main"]);
     }
 
 

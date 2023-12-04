@@ -10,7 +10,7 @@
 
 <h2>Ajouter un nouveau Pokémon</h2>
 <?php 
-if($message != null){ 
+if(isset($message)){ 
    
     echo '<style>';
     echo '.erreur {';
@@ -33,13 +33,13 @@ if($message != null){
 
 <form action="index.php?action=add-pokemon" method="POST">
     <label for="nomEspece">Nom de l'espèce :</label>
-    <input type="text" id="nomEspece" name="nomEspece" required><br>
+    <input type="text" id="nomEspece" name="nomEspece"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getNomEspece()) : ''; ?>" ><br>
 
     <label for="description">Description :</label>
-    <textarea id="description" name="description" rows="4" required></textarea><br>
+    <textarea id="description" name="description" rows="4" ></textarea><br>
 
     <label for="typeOne">Premier type :</label>
-    <input type="text" id="typeOne" name="typeOne" required><br>
+    <input type="text" id="typeOne" name="typeOne" ><br>
 
     <label for="typeTwo">Deuxième type :</label>
     <input type="text" id="typeTwo" name="typeTwo"><br>
