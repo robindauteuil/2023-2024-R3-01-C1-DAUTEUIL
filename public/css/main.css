@@ -85,4 +85,83 @@ form {
     margin: 20px auto;
 }
 
- 
+
+
+/* Styles spécifiques aux cartes Pokémon */
+.card {
+    border: 10px solid #A0A2A4; /* Couleur de la bordure */
+    border-radius: 12px;
+    margin: 20px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    background-color: #FFDB71;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Zoom au survol */
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #f7df96; /* Ligne sous l'image */
+    transition: transform 0.3s ease-in-out; /* Animation de transition */
+}
+
+.card:hover img {
+    transform: scale(1.1); /* Zoom de l'image au survol */
+}
+
+.card-body {
+    padding: 10px;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: #333; /* Couleur du titre */
+}
+
+.card-text {
+    margin-bottom: 10px;
+    color: #555; /* Couleur du texte */
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Animation de transition */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Changement de couleur au survol */
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Changement de couleur au survol */
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne lorsque la largeur est insuffisante */
+    justify-content: left; /* Répartit les éléments également sur l'axe principal (horizontal) */
+}

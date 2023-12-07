@@ -86,6 +86,32 @@ class PokemonManager extends Model{
         return $res;
     }
 
+
+    public function editPokemonAndIndex(array $dataPokemon){
+
+        parent::getDB();
+        
+        if($dataPokemon['typeOne']==$dataPokemon['typeTwo'])$dataPokemon['typeTwo'] = null;
+        $idPokemon = $dataPokemon['idPokemon'];
+        $columns = implode(', ', array_keys($dataPokemon));
+        $values = ':' . implode(', :', array_keys($dataPokemon));
+
+        if (isset($idPokemon)) {
+            // Mise à jour
+            $setValues = [];
+            foreach ($dataPokemon as $key => $value) {
+                $setValues[] = "$key = :$key";
+            }
+
+            $sql = "UPDATE pokemon SET " . implode(', ', $setValues) . " WHERE idPokemon = :idPokemon";
+        } else {
+            // Insertion
+            $sql = "INSERT INTO pokemon ($columns) VALUES ($values)";
+        }
+
+        return parent::execRequest($sql, $dataPokemon);
+    }
+
 }
 
 

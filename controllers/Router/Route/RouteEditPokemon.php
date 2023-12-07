@@ -61,6 +61,20 @@ class RouteEditPokemon extends Route8{
 
 
     public function post($params = []){
+        try {
+            $id = $data["idPokemon"] = parent::getParam($params, "idPokemon", false);
+            $data["nomEspece"] = parent::getParam($params, "nomEspece", false);
+            $data["typeOne"] = parent::getParam($params, "typeOne", false);
+            $data["typeTwo"] = parent::getParam($params, "typeTwo", false);
+            $data["description"] = parent::getParam($params, "description", false);
+            $data["urlImg"] = parent::getParam($params, "urlImg", false);
+    
+            $this->controller->editPokemonAndIndex($data);
+        }
+        catch (Exception $e) {
+            // Afficher le formulaire avec un message d'erreur
+            $this->controller->displayEditPokemon($id,$e->getMessage());
+        }
         
     }
 

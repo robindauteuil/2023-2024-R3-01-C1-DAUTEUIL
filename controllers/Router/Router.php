@@ -36,7 +36,7 @@ class Router{
     public function createRouteList(){
 
         $this->routeList["index"]=  new RouteIndex( $this->ctrlList["main"]);
-        $this->routeList["del-pokemon"]=  new RouteDelPokemon( $this->ctrlList["main"]);
+        $this->routeList["del-Pokemon"]=  new RouteDelPokemon( $this->ctrlList["main"]);
         $this->routeList["add-pokemon"]=  new RouteAddPokemon( $this->ctrlList["main"]);
         $this->routeList["add-pokemon-type"]=  new RouteAddType( $this->ctrlList["main"]);
         $this->routeList["search"]=  new RouteSearch( $this->ctrlList["main"]);

@@ -78,15 +78,38 @@ class MainController{
 
 
 
-    public function displayEditPokemon(?int $idPokemon = null)
+    public function displayEditPokemon(?int $idPokemon = null, $message = null)
     {
 
         $pokemon = $this->pokemonManager->getByID($idPokemon);
         $editPokemon =  new View('AddPokemon');
-        $editPokemon->generer(['pokemon' => $pokemon]);
+        $editPokemon->generer(['pokemon' => $pokemon,'message'=>$message]);
 
 
     }
+
+
+    public function editPokemonAndIndex(array $dataPokemon){
+
+        /*
+        $p = new Pokemon();
+        $p->setIdPokemon($data['idPokemon']);
+        $p->setNomEspece($data['nomEspece']) ;
+        $p->setTypeOne($data['typeOne']) ;
+        $p->setTypeTwo($data['typeTwo']) ;
+        $p->setDescription($data['description']) ;
+        $p->setUrlImg($data['urlImg']) ;
+        */
+
+        $res = $this->pokemonManager->editPokemonAndIndex($dataPokemon);
+        if($res) $message = "modifiaction réussi";
+        else $message = "modifiaction échouée";
+        $indexView = new View('Index');
+        $all = $this->pokemonManager->getAll();
+        $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
+
+    }
+
 } 
  
 

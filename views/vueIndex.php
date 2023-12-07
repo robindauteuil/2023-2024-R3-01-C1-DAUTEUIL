@@ -27,32 +27,30 @@ if(isset($message)){
 ?>
 
 
+<div class="card-container">
+<?php 
 
-<?php foreach ($all as $pokemon) { ?>
-    <table border="1">
-        <tr>
-            <th>idPokemon</th>
-            <th>nom espece</th>
-            <th>description</th>
-            <th>premier type</th> 
-            <th>second type</th>
-            <th>Photo</th>
-            <th>option</th>
-        </tr>
-        <tr>
-            <td><?php echo $pokemon->getIdPokemon(); ?></td>
-            <td><?php echo $pokemon->getNomEspece(); ?></td>
-            <td><?php echo $pokemon->getDescription(); ?></td>
-            <td><?php echo $pokemon->getTypeOne(); ?></td>
-            <td><?php echo $pokemon->getTypeTwo(); ?></td>
-            <td><?php echo $pokemon->getUrlImg(); ?></td>
-            <td>
-                <a class='edit-button' href='index.php?action=edit-Pokemon&id=<?php echo $pokemon->getIdPokemon(); ?>'>edit</a>
-                <a class='delete-button' href='index.php?action=del-pokemon&id=<?php echo $pokemon->getIdPokemon(); ?>'>del</a>
-            </td>
-        </tr>
-    </table>
-<?php } ?>
+
+
+foreach ($all as $key => $pokemon)  
+    {
+        echo '<div class="card">';
+        
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">' . $pokemon->getNomEspece(). '</h5>';
+        echo '<img src="' . $pokemon->getUrlImg() . '" class="card-img-top" alt="Image Pokémon">';
+        echo '<p class="card-text">Type One: ' . $pokemon->getTypeOne() . '</p>';
+        echo '<p class="card-text">Type Two: ' . $pokemon->getTypeTwo() . '</p>';
+        echo '<p class="card-text">Description: ' . $pokemon->getDescription() . '</p>';
+        echo '<a class="btn btn-primary" href="index.php?action=edit-Pokemon&id=' . $pokemon->getIdPokemon() . '">Edit</a>';
+        echo '<a class="btn btn-danger" href="index.php?action=del-Pokemon&id=' . $pokemon->getIdPokemon()  . '">Delete</a>';
+        echo '</div>';
+        echo '</div>';
+    }
+
+
+ ?>
+ </div>
 
 
 

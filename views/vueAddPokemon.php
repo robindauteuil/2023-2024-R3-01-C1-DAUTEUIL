@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/addPokemon.css"/>
-    <title>Ajouter un nouveau Pokémon</title>
+    <?php
+        if(!isset($pokemon)){
+        echo '<title>Ajouter un nouveau Pokémon</title>';
+        }
+        else echo '<title>Modifier votre Pokémon</title>';
+    ?>
+    
 </head>
 <body>
+    <?php
+        if(!isset($pokemon)){
+        echo '<h1>Ajouter un nouveau Pokémon</h1>';
+        }
+        else echo '<h1>Modifier votre Pokémon</h1>';
+    ?>
 
-<h2>Ajouter un nouveau Pokémon</h2>
+
 <?php 
 if(isset($message)){ 
    
@@ -31,23 +43,36 @@ if(isset($message)){
 
 ?>
 
-<form action="index.php?action=add-pokemon" method="POST">
+
+
+
+
+
+<form <?php if (isset($pokemon)) echo 'action="index.php?action=edit-Pokemon" '; else echo 'action="index.php?action=add-pokemon" '; ?>  method="POST">
+    <?php
+        if(isset($pokemon)){
+        echo '<input type="hidden" id="idPokemon" name="idPokemon" value="'.$pokemon->getIdPokemon().'">';
+
+        }
+    ?>
+
+
     <label for="nomEspece">Nom de l'espèce :</label>
     <input type="text" id="nomEspece" name="nomEspece"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getNomEspece()) : ''; ?>" ><br>
 
     <label for="description">Description :</label>
-    <textarea id="description" name="description" rows="4" ></textarea><br>
+    <input id="description" name="description" type="text" value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getDescription()) : ''; ?>" ></input><br>
 
     <label for="typeOne">Premier type :</label>
-    <input type="text" id="typeOne" name="typeOne" ><br>
+    <input type="text" id="typeOne" name="typeOne"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getTypeOne()) : ''; ?>"><br>
 
     <label for="typeTwo">Deuxième type :</label>
-    <input type="text" id="typeTwo" name="typeTwo"><br>
+    <input type="text" id="typeTwo" name="typeTwo"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getTypeTwo()) : ''; ?>"><br>
 
     <label for="urlImg">URL de l'image :</label>
-    <input type="text" id="urlImg" name="urlImg"><br>
+    <input type="text" id="urlImg" name="urlImg"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getUrlImg()) : ''; ?>"><br>
 
-    <input type="submit" value="Ajouter le Pokémon">
+    <input type="submit" <?php if (isset($pokemon)) echo 'value= "Modifier le Pokémon" '; else echo 'value= "Ajouter le Pokémon" '; ?> >
 </form>
 
 </body>
