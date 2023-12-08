@@ -8,9 +8,33 @@
 </head>
 <body>
 
-    <form action="traitement_ajout_type.php" method="post">
+<?php 
+if(isset($message)){ 
+   
+    echo '<style>';
+    echo '.erreur {';
+    echo '    color: #ff0000; /* Couleur rouge */';
+    echo '    font-weight: bold;';
+    echo '    margin-bottom: 10px;';
+    echo '}';
+    echo '</style>';
+    echo '</head>';
+    echo '<body>';
+    
+    echo '<div class="erreur">';
+    echo '<p>' . $message . '</p>';
+    echo '</div>';
+    
+
+}
+
+?>
+
+
+    <form action="index.php?action=add-pokemon-type" method="post">
         <label for="nomType">Nom du Type :</label>
-        <input type="text" id="nomType" name="nomType" required>
+        <input type="text" id="nomType" name="nomType" >
+        <input type="text" id="urlImg" name="urlImg"  ><br>
 
         <button type="submit">Ajouter Type</button>
     </form>

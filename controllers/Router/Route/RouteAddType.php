@@ -11,6 +11,7 @@ abstract class Route4{
 
     public function action($params = [], $method = 'GET'){
         if($method == 'GET') $this->get($params);
+        else $this->post($params);
     }
 
     abstract protected function get($params = []);
@@ -48,7 +49,20 @@ class RouteAddType extends Route4{
 
 
     public function post($params = []){
-        $this->controler->index();
+
+        try {
+            // Récupérer les valeurs nécessaires avec getParam
+            $data["nomType"] = parent::getParam($params, "nomType", false);
+            $data["urlImg"] = parent::getParam($params, "urlImg", false);
+
+
+            // Appeler la méthode du contrôleur avec les données
+            $this->controler->addPkmnType($data);
+        } catch (Exception $e) {
+            // Afficher le formulaire avec un message d'erreur
+            $this->controler->displayAddType($e->getMessage());
+        }
+        
     }
 
 }

@@ -34,7 +34,7 @@ class PokemonManager extends Model{
         $idPokemon["idPokemon"] = $id;
         $result = parent::execRequest('select * from pokemon where idPokemon = :idPokemon', $idPokemon);
         $row = $result->fetch(PDO::FETCH_ASSOC);
-
+        $pokemon = null;
         if ($row) {
             $pokemon = new Pokemon();
             $pokemon->setIdPokemon($row['idPokemon']);
@@ -45,9 +45,7 @@ class PokemonManager extends Model{
             $pokemon->setUrlImg($row['urlImg']);
             
         } 
-        else {
-            return null; // Aucun Pokémon trouvé avec cet ID.
-        }
+        
 
         return $pokemon;
     } 

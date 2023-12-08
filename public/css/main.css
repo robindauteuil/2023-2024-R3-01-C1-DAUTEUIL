@@ -1,5 +1,11 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+    
+}
+main{
+    background: url('../img/forest.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 h1{

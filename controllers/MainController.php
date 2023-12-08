@@ -2,6 +2,8 @@
 
 require_once('views/View.php');
 require_once('models/PokemonManager.php');
+require_once('models/PkmnTypeManager.php');
+require_once('models/pkmntype.php');
 
  
 class MainController{
@@ -9,6 +11,7 @@ class MainController{
 
     public function __construct() {
         $this->pokemonManager = new PokemonManager();
+        $this->typeManager = new PkmntypeManager();
     }
     public function Index() : void {
         
@@ -32,9 +35,9 @@ class MainController{
     }
 
 
-    public function displayAddType() :void{
+    public function displayAddType(?string $message = null) :void{
         $indexView = new View('AddType');
-        $indexView->generer([]);
+        $indexView->generer(['message' => $message]);
 
 
     }
@@ -44,6 +47,18 @@ class MainController{
         $indexView->generer([]);
 
 
+    }
+
+    public function addPkmnType(array $data)
+    {
+        $t= new PkmnType($data);
+        $insert = $this->typeManager->createPkmnType($t);
+
+        if($insert)$message = 'insertion du type réussie';
+        else $message = 'insertion du type a échoué';
+        $indexView = new View('Index');
+        $all = $this->pokemonManager->getAll();
+        $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
     }
     
 

@@ -18,7 +18,6 @@ $router->routing($action,$data);
 
   
 
-
  
  
 ?>  

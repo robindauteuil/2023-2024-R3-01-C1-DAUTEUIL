@@ -64,10 +64,10 @@ if(isset($message)){
     <input id="description" name="description" type="text" value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getDescription()) : ''; ?>" ></input><br>
 
     <label for="typeOne">Premier type :</label>
-    <input type="text" id="typeOne" name="typeOne"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getTypeOne()) : ''; ?>"><br>
+    <input type="text" id="typeOne" name="typeOne"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getTypeOne()->nomType) : ''; ?>"><br>
 
     <label for="typeTwo">Deuxième type :</label>
-    <input type="text" id="typeTwo" name="typeTwo"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getTypeTwo()) : ''; ?>"><br>
+    <input type="text" id="typeTwo" name="typeTwo"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getTypeTwo()->nomType) : ''; ?>"><br>
 
     <label for="urlImg">URL de l'image :</label>
     <input type="text" id="urlImg" name="urlImg"  value="<?= isset($pokemon) ? htmlspecialchars($pokemon->getUrlImg()) : ''; ?>"><br>
