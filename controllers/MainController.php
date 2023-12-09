@@ -26,10 +26,11 @@ class MainController{
     }
 
 
+    /*
 
     public function displayAddPokemon(?string $message = null ) :void{
         $indexView = new View('AddPokemon');
-        $indexView->generer(['message' => $message]);
+        $indexView->generer(['message' => $message,'types' =>$this->typeManager->getAll()]);
 
 
     }
@@ -114,7 +115,7 @@ class MainController{
         $p->setTypeTwo($data['typeTwo']) ;
         $p->setDescription($data['description']) ;
         $p->setUrlImg($data['urlImg']) ;
-        */
+        
 
         $res = $this->pokemonManager->editPokemonAndIndex($dataPokemon);
         if($res) $message = "modifiaction réussi";
@@ -123,7 +124,7 @@ class MainController{
         $all = $this->pokemonManager->getAll();
         $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
 
-    }
+    }*/
 
 } 
  

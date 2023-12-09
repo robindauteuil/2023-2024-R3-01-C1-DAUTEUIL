@@ -7,14 +7,24 @@ class PkmnType{
     private string $nomType;
     private string $urlImg;
 
+    public function getIdType() : int{
+        return $this->idType;
+    }
+
+    public function getNomType() : string{
+        return $this->nomType;
+    }
+
+    public function getUrlImg() : string{
+        return $urlImg;
+    }
 
     public function __construct(array $data){
-        if (isset($data['nomType'], $data['urlImg'])) {
-            // Affectez les valeurs aux propriétés de la classe
-            
-            $this->nomType = $data['nomType'];
-            $this->urlImg = $data['urlImg'];
-        } 
+        
+        if(isset($data['idType']))$this->idType = $data['idType'];
+        $this->nomType = $data['nomType'];
+        $this->urlImg = $data['urlImg'];
+        
     }
 
 
@@ -24,6 +34,8 @@ class PkmnType{
         $urlImg = $data[2];
 
     }
+
+
 
 
     // Méthode pour obtenir la liste des propriétés

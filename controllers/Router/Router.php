@@ -6,6 +6,8 @@ include_once('Route/RouteAddType.php');
 include_once('Route/RouteSearch.php');
 include_once('Route/RouteDelPokemon.php');
 include_once('Route/RouteEditPokemon.php');
+include_once('Route/RouteEditPokemon.php');
+
 
 class Router{
 
@@ -27,7 +29,7 @@ class Router{
 
     public function createControllerList(){
         $this->ctrlList["main"]=  new MainController();
-        //$this->ctrlList["pokemon"]=  new PokemonController();
+        $this->ctrlList["pokemon"]=  new PokemonController();
 
 
     }
@@ -36,11 +38,11 @@ class Router{
     public function createRouteList(){
 
         $this->routeList["index"]=  new RouteIndex( $this->ctrlList["main"]);
-        $this->routeList["del-Pokemon"]=  new RouteDelPokemon( $this->ctrlList["main"]);
-        $this->routeList["add-pokemon"]=  new RouteAddPokemon( $this->ctrlList["main"]);
-        $this->routeList["add-pokemon-type"]=  new RouteAddType( $this->ctrlList["main"]);
-        $this->routeList["search"]=  new RouteSearch( $this->ctrlList["main"]);
-        $this->routeList["edit-Pokemon"]=  new RouteEditPokemon( $this->ctrlList["main"]);
+        $this->routeList["del-Pokemon"]=  new RouteDelPokemon( $this->ctrlList["pokemon"]);
+        $this->routeList["add-pokemon"]=  new RouteAddPokemon( $this->ctrlList["pokemon"]);
+        $this->routeList["add-pokemon-type"]=  new RouteAddType( $this->ctrlList["pokemon"]);
+        $this->routeList["search"]=  new RouteSearch( $this->ctrlList["pokemon"]);
+        $this->routeList["edit-Pokemon"]=  new RouteEditPokemon( $this->ctrlList["pokemon"]);
     }
 
 

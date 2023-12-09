@@ -1,10 +1,18 @@
 <?php
 require_once('Model.php');
 require_once('Pokemon.php');
+require_once('PkmnTypeManager.php');
 
 class PokemonManager extends Model{
  
     private array $pokemons;
+    private PkmnTypeManager $typeManager ;
+
+    public function __construct()
+    {
+        //$typeManager = new PkmnTypeManager();
+
+    }
 
 
     public function getAll() : array{
@@ -20,7 +28,7 @@ class PokemonManager extends Model{
             $pokemon->setNomEspece($row['nomEspece']);
             $pokemon->setDescription($row['description']);
             $pokemon->setTypeOne($row['typeOne']);
-            $pokemon->setTypeTwo($row['typeTwo']);
+            if(isset($row['typeTwo']))$pokemon->setTypeTwo($row['typeTwo']);
             $pokemon->setUrlImg($row['urlImg']);
             $pokemonArray[] = $pokemon;
         }
@@ -41,7 +49,7 @@ class PokemonManager extends Model{
             $pokemon->setNomEspece($row['nomEspece']);
             $pokemon->setDescription($row['description']);
             $pokemon->setTypeOne($row['typeOne']);
-            $pokemon->setTypeTwo($row['typeTwo']);
+            if(isset($row['typeTwo']))$pokemon->setTypeTwo($row['typeTwo']);
             $pokemon->setUrlImg($row['urlImg']);
             
         } 
@@ -53,7 +61,12 @@ class PokemonManager extends Model{
 
     public function createPokemon(Pokemon $pokemon){
 
-        $pokemonArray = $pokemon->toArray();
+        //$pokemonArray = $pokemon->toArray();
+        $pokemonArray['nomEspece'] = $pokemon->getNomEspece();
+        $pokemonArray['description'] = $pokemon->getDescription();
+        $pokemonArray['typeOne'] = $pokemon->getTypeOne()?->getIdType();
+        $pokemonArray['typeTwo'] = $pokemon->getTypeTwo()?->getIdType();
+        $pokemonArray['urlImg'] = $pokemon->getUrlImg();
         
         // Construction de la requête SQL
         $columns = implode(', ', array_keys($pokemonArray));
@@ -101,6 +114,10 @@ class PokemonManager extends Model{
                 $setValues[] = "$key = :$key";
             }
 
+            //$sql = 'Update pokemon set nomEspece = '.$dataPokemon["nomEspece"].', typeOne = '. $dataPokemon["typeOne"] .' , description = '.$dataPokemon["description"].', urlImg = '.$dataPokemon["urlImg"] .' where idPokemon = '. $dataPokemon['idPokemon'];
+            if (isset($dataPokemon['typeTwo'])) {
+             //   $sql .= ', typeTwo = ' . $dataPokemon['typeTwo'];
+            }
             $sql = "UPDATE pokemon SET " . implode(', ', $setValues) . " WHERE idPokemon = :idPokemon";
         } else {
             // Insertion

@@ -20,3 +20,34 @@ form button {
 form button:hover {
     background-color: #0056b3;
 }
+
+
+select {
+    padding: 10px; /* Espacement intérieur */
+    font-size: 16px; /* Taille de la police */
+    border: 1px solid #ccc; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    width: 100%; /* Largeur à 100% du conteneur parent */
+    background-color: #fff; /* Couleur de fond */
+    color: #333; /* Couleur du texte */
+    cursor: pointer; /* Curseur de type pointeur */
+}
+
+/* Style pour les options du select */
+select option {
+    padding: 5px; /* Espacement intérieur des options */
+    font-size: 14px; /* Taille de la police des options */
+    background-color: #fff; /* Couleur de fond des options */
+    color: #333; /* Couleur du texte des options */
+}
+
+/* Style pour le select lorsque survolé */
+select:hover {
+    border-color: #007bff; /* Bordure bleue en survol */
+}
+
+/* Style pour le select lorsque focus */
+select:focus {
+    outline: none; /* Supprimer le contour en focus */
+    box-shadow: 0 0 5px #007bff; /* Ombre bleue en focus */
+}

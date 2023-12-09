@@ -15,7 +15,7 @@ class PkmnTypeManager extends Model
         $pokemontypeArray = [];
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) 
         {
-            $pt = new PkmnType(row);
+            $pt = new PkmnType($row);
             $pokemontypeArray[] = $pt;
             
         }
@@ -34,6 +34,10 @@ class PkmnTypeManager extends Model
         if ($row)
         {
             $type = new PkmnType($row);
+        }
+        else
+        {
+            $type = new PkmnType('errorType', '');
         }
 
         return $type;

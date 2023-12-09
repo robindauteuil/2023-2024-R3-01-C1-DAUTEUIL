@@ -1,6 +1,7 @@
 <?php
 declare(strict_types = 1);
 require_once('controllers/MainController.php');
+require_once('controllers/PokemonController.php');
 require_once('controllers/Router/Router.php');
 //require_once('controllers/Router/Route.php');
 if(isset($_POST) && !empty($_POST))

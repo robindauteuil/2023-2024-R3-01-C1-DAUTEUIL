@@ -1,17 +1,12 @@
 <?php
 
 
-abstract class Route2{
+abstract class Route{
  
  
-    protected $controller;
-
-    public function __construct(MainController $controller) {
-        $this->controller = $controller;}
-
-
-    public function action($params = [], $method = 'GET'){
+    public function action(?array $params = null, $method = 'GET'){
         if($method == 'GET') $this->get($params);
+        else $this->post($params);
     }
 
     abstract protected function get($params = []);
@@ -30,9 +25,6 @@ abstract class Route2{
         } else
             throw new Exception("Paramètre '$paramName' absent");
     }
-
-
-    
 
 
 }

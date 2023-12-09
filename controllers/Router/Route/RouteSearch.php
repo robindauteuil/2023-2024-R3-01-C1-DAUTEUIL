@@ -1,44 +1,14 @@
 <?php
 
-abstract class Route5{
- 
- 
- //protected $controller;
-
- //public function __construct(MainController $controller) {
-   //  $this->controller = $controller;}
-
-
- public function action($params = [], $method = 'GET'){
-     if($method == 'GET') $this->get($params);
- }
-
- abstract protected function get($params = []);
-
- abstract protected function post($params = []);
 
 
 
 
- protected function getParam(array $array, string $paramName, bool $canBeEmpty=true)
- {
-     if (isset($array[$paramName])) {
-         if(!$canBeEmpty && empty($array[$paramName]))
-             throw new Exception("Paramètre '$paramName' vide");
-         return $array[$paramName];
-     } else
-         throw new Exception("Paramètre '$paramName' absent");
- }
- 
-}
+class RouteSearch extends Route{
 
+ private PokemonController $controler;
 
-
-class RouteSearch extends Route5{
-
- private MainController $controler;
-
- public function __construct(MainController $controller) {
+ public function __construct(PokemonController $controller) {
      //parent::__construct($controller);
      $this->controler = $controller;
  } 
