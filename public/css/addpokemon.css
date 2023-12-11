@@ -5,6 +5,7 @@ form textarea {
     padding: 10px;
     margin-bottom: 15px;
     box-sizing: border-box;
+    margin: 10px;
 }
 
 /* Style du bouton de soumission */
@@ -31,6 +32,7 @@ select {
     background-color: #fff; /* Couleur de fond */
     color: #333; /* Couleur du texte */
     cursor: pointer; /* Curseur de type pointeur */
+    margin: 10px;
 }
 
 /* Style pour les options du select */

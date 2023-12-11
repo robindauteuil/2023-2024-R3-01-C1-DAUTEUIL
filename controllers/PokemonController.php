@@ -29,9 +29,9 @@ class PokemonController{
 
     }
 
-    public function displaySearch() :void{
+    public function displaySearch( $message = null) :void{
         $indexView = new View('Search');
-        $indexView->generer([]);
+        $indexView->generer(['message'=>$message]);
 
 
     }
@@ -109,6 +109,26 @@ class PokemonController{
         $indexView = new View('Index');
         $all = $this->pokemonManager->getAll();
         $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
+
+    }
+
+
+    public function search(array $paramsResearch)
+    {
+        $resultResearch = $this->pokemonManager->search($paramsResearch);
+        if(!empty($resultResearch)){
+
+            $message = "recherche réussi";
+            $indexView = new View('Index');
+            $indexView->generer(['nomDresseur' => "Robin", 'all'=>$resultResearch,'message'=>$message]);
+        }
+        else{
+            $message = "la recherche n a pas abouti";
+            $this->displaySearch($message);
+
+        } 
+        
+        
 
     }
 

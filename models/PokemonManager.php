@@ -127,6 +127,30 @@ class PokemonManager extends Model{
         return parent::execRequest($sql, $dataPokemon);
     }
 
+
+
+    public function search(array $paramsResearch)
+    {
+        parent::getDB();
+        $champRecherche = $paramsResearch['champRecherche'];
+        $valeurRecherche['valeurRecherche'] = $paramsResearch['valeurRecherche'];
+
+
+        $sql = "select idPokemon from pokemon where $champRecherche  = :valeurRecherche";
+        $result = parent::execRequest($sql,$valeurRecherche );
+        $pokemons =[];
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        $pokemon = null;
+        if ($row) 
+        {
+            $pokemon = $this->getByID($row['idPokemon']);
+            $pokemons[] = $pokemon;
+        }
+        
+
+        return $pokemons;
+    }
+
 }
 
 
