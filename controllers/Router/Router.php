@@ -27,6 +27,8 @@ class Router{
 
 
 
+
+    //cree la liste de controller
     public function createControllerList(){
         $this->ctrlList["main"]=  new MainController();
         $this->ctrlList["pokemon"]=  new PokemonController();
@@ -35,6 +37,8 @@ class Router{
     }
 
 
+
+    //cree la liste de route
     public function createRouteList(){
 
         $this->routeList["index"]=  new RouteIndex( $this->ctrlList["main"]);
@@ -46,6 +50,7 @@ class Router{
     }
 
 
+    //appelle la bonne route en fonction des parametres 
     public function routing($get,$post){
 
         if($get != null)

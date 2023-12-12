@@ -7,6 +7,9 @@ class PkmnTypeManager extends Model
     private array $pkmnTypes;
 
 
+
+
+    //renvoie un tableau de tous les types
     public function getAll() : array
     {
         parent::getDB();
@@ -24,6 +27,9 @@ class PkmnTypeManager extends Model
     }
 
 
+
+
+    // renvoie le type qui correspond à l id en parametre(renvoie une exception si le type n existe pas)
     public function getById(int $id) : ?pkmnType
     {
         parent::getDB();
@@ -37,7 +43,7 @@ class PkmnTypeManager extends Model
         }
         else
         {
-            $type = new PkmnType('errorType', '');
+            throw new Exception("le type n est pas valide");
         }
 
         return $type;
@@ -45,11 +51,15 @@ class PkmnTypeManager extends Model
     }
 
 
+
+    //ajoute un le nouveau type passé en parametre 
     public function createPkmnType(PkmnType $pkmnType) 
     {
         $typeArray = $pkmnType->toArray();
         
-        // Construction de la requête SQL
+        
+        // Construction de la requête SQL pour l'insertion de données
+        // Convertit les clés du tableau en chaîne pour les colonnes et les valeurs
         $columns = implode(', ', array_keys($typeArray));
         $values = ':' . implode(', :', array_keys($typeArray));
         $sql = "INSERT INTO PKMN_TYPE ($columns) VALUES ($values)";
@@ -57,11 +67,6 @@ class PkmnTypeManager extends Model
         
         $res = parent::execRequest($sql,$typeArray);
 
-
-        //$sql2 = "SELECT LAST_INSERT_ID() as last_id";
-        //$id = (int) parent::execRequest($sql2)->fetchColumn();
-
-        
         return $res;
 
     }
@@ -70,8 +75,12 @@ class PkmnTypeManager extends Model
     public function deletePkmnType(?int $id = null) {
         parent::getDB();
         $idtype["idType"] = $id;
+
+        // Exécute une requête SQL pour supprimer un type de Pokémon par son ID
         $rc = parent::execRequest("DELETE FROM PKMN_TYPE WHERE idType = :idType", $idtype);
         
+
+        // Vérifie si des lignes ont été affectées par la requête
         $rowCount = $rc->rowCount();
         if($rowCount>0) $res = true;
         else $res = false;
@@ -79,6 +88,8 @@ class PkmnTypeManager extends Model
     }
 
 
+
+    
 
     public function editPkmnTypet(Pkmntype $pkmnType)
     {
