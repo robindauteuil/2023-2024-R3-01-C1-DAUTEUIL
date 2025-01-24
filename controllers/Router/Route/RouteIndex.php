@@ -10,6 +10,8 @@ class RouteIndex extends Route{
     }
   
 
+
+    //affiche la page principale
     public function get($params = []){
         $this->controler->index();
        

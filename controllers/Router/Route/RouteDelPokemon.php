@@ -18,7 +18,7 @@ class RouteDelPokemon extends Route{
         $this->controller->deletePokemonAndIndex($id);
         }
         catch (Exception $e) {
-            // Afficher le formulaire avec un message d'erreur
+            // Afficher le formulaire si l id n existe pas
             $this->controller->deletePokemonAndIndex();
         }
 
@@ -28,3 +28,6 @@ class RouteDelPokemon extends Route{
         // Logique pour la méthode POST
     }
 }
+
+
+?>

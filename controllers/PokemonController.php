@@ -6,6 +6,7 @@ require_once('models/PokemonManager.php');
  
 class PokemonController{
     private $pokemonManager;
+    private $typeManager;
 
     public function __construct() {
         $this->pokemonManager = new PokemonManager();
@@ -14,6 +15,8 @@ class PokemonController{
 
 
 
+
+    //affiche le formulaire d ajout de pokemon
     public function displayAddPokemon(?string $message = null ) :void{
         $indexView = new View('AddPokemon');
         $indexView->generer(['message' => $message,'types' =>$this->typeManager->getAll()]);
@@ -22,6 +25,8 @@ class PokemonController{
     }
 
 
+
+    //affiche le formulaire d ajout de type de pokemon
     public function displayAddType(?string $message = null) :void{
         $indexView = new View('AddType');
         $indexView->generer(['message' => $message]);
@@ -29,13 +34,17 @@ class PokemonController{
 
     }
 
+
+    //affiche le formulaire de recherche
     public function displaySearch( $message = null) :void{
         $indexView = new View('Search');
-        $indexView->generer(['message'=>$message]);
+        $indexView->generer(['message'=>$message, 'types'=>$this->typeManager->getAll()]);
 
 
     }
 
+
+    //ajoute un nouveau type avec les données en parametres
     public function addPkmnType(array $data)
     {
         $t= new PkmnType($data);
@@ -48,7 +57,7 @@ class PokemonController{
         $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all,'message'=>$message]);
     }
     
-
+//ajoute un pokemon avec les données en parametre et affiche la page principale avec le message de reussite ou d echec
     public function addPokemon(array $data){
         $p = new Pokemon();
         $p->setNomEspece($data['nomEspece']) ;

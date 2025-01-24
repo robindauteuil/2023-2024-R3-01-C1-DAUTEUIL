@@ -22,16 +22,24 @@ class RouteSearch extends Route{
         try {
             // Récupérer les valeurs nécessaires avec getParam
             $data["champRecherche"] = parent::getParam($params, "champRecherche", false);
-            $data["valeurRecherche"] = parent::getParam($params, "valeurRecherche", false);
+            
+
+            //si le critere de recherche est un type la valeur de recherche est la valeur du menu deroulant des types
+            if($data["champRecherche"] == "typeOne" || $data["champRecherche"] == "typeTwo"){
+                $data["valeurRecherche"] = parent::getParam($params, "typeSearch", false);
+            }
+            else $data["valeurRecherche"] = parent::getParam($params, "valeurRecherche", false);
 
             // Un tableau associatif des champs et de leurs types attendus
             $expectedTypes = [
                 'nomEspece' => 'string',
                 'idPokemon' => 'int',
                 'description' => 'string',
+                'typeOne' => 'int',
+                'typeTwo' => 'int'    
                 
             ];
-
+ 
 
 
                 // Vérifier si le champ de recherche est valide et déterminer le type attendu
@@ -51,7 +59,7 @@ class RouteSearch extends Route{
                 case 'float':
                     $isTypeValid = is_float($data["valeurRecherche"]) || (is_numeric($data["valeurRecherche"]) && strpos($data["valeurRecherche"], '.') !== false);
                     break;
-                // ajoutez d'autres cas au besoin
+                
             }
 
             // Utiliser $isTypeValid pour décider de la suite des actions

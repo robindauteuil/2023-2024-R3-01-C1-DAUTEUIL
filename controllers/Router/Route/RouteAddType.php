@@ -11,11 +11,16 @@ class RouteAddType extends Route{
     } 
 
 
+    //affiche le formulaire d ajout d un pokemon
+
     public function get($params = []){
         $this->controler->displayAddType();
     }
 
 
+
+
+    //ajoute le nouveu type avec les données en parametres
     public function post($params = []){
 
         try {

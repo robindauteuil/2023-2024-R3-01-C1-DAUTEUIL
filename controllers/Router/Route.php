@@ -4,6 +4,8 @@
 abstract class Route{
  
  
+
+    //appelle la bonne methode en fonction des parametres
     public function action(?array $params = null, $method = 'GET'){
         if($method == 'GET') $this->get($params);
         else $this->post($params);

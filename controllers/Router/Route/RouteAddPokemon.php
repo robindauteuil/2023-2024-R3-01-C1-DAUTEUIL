@@ -7,16 +7,19 @@ class RouteAddPokemon extends Route{
     private PokemonController $controler;
 
     public function __construct(PokemonController $controller) {
-        //parent::__construct($controller);
         $this->controler = $controller;
     } 
 
 
+
+    //affiche le formulaire d ajout 
     public function get($params = []){
         $this->controler->displayAddPokemon();
     }
 
 
+
+    //creer un nouveau pokemon avec les données de $_POST
     public function post($params = []){
         try {
             // Récupérer les valeurs nécessaires avec getParam

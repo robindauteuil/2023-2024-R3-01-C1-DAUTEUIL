@@ -37,13 +37,28 @@
             <?php
             // Obtenez la liste des propriétés de la classe Pokemon 
             $proprietes = Pokemon::getProprietes();
+       
 
-            // Générez dynamiquement les options du menu déroulant
-            foreach ($proprietes as $propriete) {
-                echo "<option value='$propriete'>$propriete</option>";
-            }
+        // Générez dynamiquement les options du menu déroulant
+        foreach ($proprietes as $propriete) {
+            $isSelected = $selectedChampRecherche === $propriete;
+            echo "<option value='$propriete'" . ($isSelected ? ' selected' : '') . ">$propriete</option>";
+        }
             ?>
         </select>
+
+        
+   
+   
+        <select id="typeSearch" name="typeSearch" >
+            <?php foreach ($types as $type) {
+                // Vérifier si le Pokémon a un type et si ce type correspond à l'option actuelle
+                $isSelected = isset($pokemon) && $pokemon->getTypeOne()->getIdType() == $type->getIdType();
+                echo '<option value="' . htmlspecialchars($type->getIdType()) . '"' . ($isSelected ? ' selected' : '') . '>' . htmlspecialchars($type->getNomType()) . '</option>';
+            } ?>
+        </select>
+    
+    
 
         <label for="valeurRecherche">Valeur de Recherche :</label>
         <input type="text" id="valeurRecherche" name="valeurRecherche">

@@ -18,7 +18,7 @@ class MainController{
 
         $all = $this->pokemonManager->getAll();
         
-        //$pika = $this->pokemonManager->getByID(1);
+        //genere la page principale avec un tableau de tous les pokemons
         $indexView = new View('Index');
         $indexView->generer(['nomDresseur' => "Robin", 'all'=>$all]);
         
